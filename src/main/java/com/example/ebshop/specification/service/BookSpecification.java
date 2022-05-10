@@ -6,13 +6,12 @@ import com.example.ebshop.entity.Publisher;
 import com.example.ebshop.specification.model.SearchCriteria;
 import org.springframework.data.jpa.domain.Specification;
 import org.springframework.util.ObjectUtils;
-
 import javax.persistence.criteria.*;
 import java.math.BigDecimal;
 
 public class BookSpecification implements Specification<Book> {
 
-    private SearchCriteria criteria;
+    private final SearchCriteria criteria;
 
     public BookSpecification(SearchCriteria criteria) {
         this.criteria = criteria;

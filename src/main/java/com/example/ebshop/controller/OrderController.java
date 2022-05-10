@@ -18,17 +18,17 @@ public class OrderController {
     private CustomerService customerService;
 
     @PostMapping("/save")
-    private ResponseEntity<String> saveOrder(@RequestBody SaveOrderDTO saveOrderDTO){
+    public ResponseEntity<String> saveOrder(@RequestBody SaveOrderDTO saveOrderDTO){
         return ordersService.saveOrder(saveOrderDTO);
     }
 
     @GetMapping("/{id}")
-    private ResponseEntity<?> getOrder(@PathVariable String id){
+    public ResponseEntity<?> getOrder(@PathVariable String id){
         return ordersService.getOrder(id);
     }
 
     @GetMapping("/best-seller")
-    private ResponseEntity<?> fiveBestCustomer(){
+    public ResponseEntity<?> fiveBestCustomer(){
         return customerService.fiveBestCustomer();
     }
 }

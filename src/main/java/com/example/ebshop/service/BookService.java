@@ -10,9 +10,6 @@ import com.example.ebshop.entity.OrderDetail;
 import com.example.ebshop.specification.model.PageType;
 import com.example.ebshop.specification.model.Search;
 import com.example.ebshop.specification.model.SortType;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
-import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 
 import java.util.List;
@@ -32,7 +29,5 @@ public interface BookService {
     void soldBook(List<OrderDetail> orderDetails);
     boolean isDeleted(String id);
     ResponseEntity<?> tenBestSellingBook();
-    Long getTotalNumberOfSoldBookById(String id);
-    Long getSoldBookByPublisherId(String id);
     ResponseEntity<?> search(Search search, SortType sortType, PageType pageType);
 }

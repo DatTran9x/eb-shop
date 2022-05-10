@@ -25,7 +25,6 @@ import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 import javax.transaction.Transactional;
 import java.util.ArrayList;
 import java.util.List;
@@ -65,7 +64,7 @@ public class BookServiceImpl implements BookService {
     //Cập nhật lại sách đã tồn tại
     private void updateExistingBook(SavedBookDTO book) {
         Book oldBook = findBookById(book.getId());
-        if (oldBook.getDeleted()) return;
+        if (Boolean.TRUE.equals(oldBook.getDeleted())) return;
         transferDataFromSaveBookToBook(book, oldBook);
         saveBook(oldBook);
     }
@@ -115,7 +114,7 @@ public class BookServiceImpl implements BookService {
     //Lấy ra Dto của sách từ ID
     private UpdatedBookDTO getBookByIdToUpdate(String id) {
         Book book = findBookById(id);
-        if (book.getDeleted()) return null;
+        if (Boolean.TRUE.equals(book.getDeleted())) return null;
         return bookRepository.findAllById(UpdatedBookDTO.class, id);
     }
 
@@ -136,27 +135,6 @@ public class BookServiceImpl implements BookService {
         Page<BookDetailsDTO> page = bookRepository.tenBestSellingBook(BookDetailsDTO.class, PageRequest.of(0, 10));
         List<BookDetailsDTO> bookDetailsDTO = page.getContent();
         return ResponseEntity.status(HttpStatus.OK).body(bookDetailsDTO);
-    }
-
-    // Lấy ra tổng số sách đã bán
-    @Override
-    public Long getTotalNumberOfSoldBookById(String id) {
-        Long total = 0L;
-        List<Long> soldBookList = bookRepository.findListQuantitySoldBook(id);
-        for (Long number : soldBookList) {
-            total += number;
-        }
-        return total;
-    }
-
-    @Override
-    public Long getSoldBookByPublisherId(String id) {
-        Long total = 0L;
-        List<Long> soldBookList = bookRepository.findQuantitySoldBookByPublisherId(id);
-        for (Long number : soldBookList) {
-            total += number;
-        }
-        return total;
     }
 
     @Override

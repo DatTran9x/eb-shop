@@ -11,7 +11,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
-import org.springframework.util.ObjectUtils;
 import java.math.BigDecimal;
 import java.util.List;
 
@@ -19,13 +18,6 @@ import java.util.List;
 public class CustomerServiceImpl implements CustomerService {
     @Autowired
     private CustomerRepository customerRepository;
-
-    //Tìm khách
-    @Override
-    public Customer findByID(String email) {
-        if (ObjectUtils.isEmpty(customerRepository.findById(email))) return null;
-        return customerRepository.findById(email).get();
-    }
 
     // Lưu khách
     @Override

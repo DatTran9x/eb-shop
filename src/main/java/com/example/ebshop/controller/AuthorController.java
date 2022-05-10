@@ -16,31 +16,31 @@ public class AuthorController {
 
     //Lưu tác giả vào
     @PostMapping("/save")
-    private ResponseEntity<String> saveAuthor(@RequestBody SaveAuthorDTO authorDTO) {
+    public ResponseEntity<String> saveAuthor(@RequestBody SaveAuthorDTO authorDTO) {
        return authorService.saveAuthor(authorDTO);
     }
 
     //Sửa thông tin tác giả
     @PutMapping("/update")
-    private ResponseEntity<String> updateAuthor(@RequestBody SaveAuthorDTO authorDTO) {
+    public ResponseEntity<String> updateAuthor(@RequestBody SaveAuthorDTO authorDTO) {
         return authorService.updateAuthor(authorDTO);
     }
 
     //Xóa tác giả
     @DeleteMapping("/{id}")
-    private ResponseEntity<String> deleteAuthor(@PathVariable String id){
+    public ResponseEntity<String> deleteAuthor(@PathVariable String id){
         return authorService.deleteAuthor(id);
     }
 
     //Xem thông tin tác giả
     @GetMapping("/{id}")
-    private ResponseEntity<?> getAuthorById(@PathVariable String id){
+    public ResponseEntity<?> getAuthorById(@PathVariable String id){
         return authorService.getAuthorById(id);
     }
 
     //Xem 5 tác giả nhiều lượt view nhất
     @GetMapping("/best-seller")
-    private ResponseEntity<?> getFiveBestSeller(){
+    public ResponseEntity<?> getFiveBestSeller(){
         return authorService.getFiveBestSeller();
     }
 }

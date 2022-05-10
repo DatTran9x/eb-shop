@@ -1,8 +1,7 @@
 package com.example.ebshop.dto.request;
 
-import com.example.ebshop.entity.Author;
-import com.example.ebshop.entity.Publisher;
 import lombok.Data;
+
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,7 +17,7 @@ public class SavedBookDTO {
     private Date publishedYear;
     private Long quantity;
 
-    public class AuthorDTO{
+    public static class AuthorDTO{
         private String id;
 
         public String getId() {
@@ -26,7 +25,7 @@ public class SavedBookDTO {
         }
     }
 
-    public class PublisherDTO{
+    public static class PublisherDTO{
         private String id;
 
         public String getId() {

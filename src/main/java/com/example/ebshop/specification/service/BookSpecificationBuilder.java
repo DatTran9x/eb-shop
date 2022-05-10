@@ -23,24 +23,24 @@ public class BookSpecificationBuilder {
         SearchCriteria searchMax = new SearchCriteria("price", "<", bookSearch.getMaxPrice());
         SearchCriteria delete = new SearchCriteria();
         Specification<Book> where = null;
-        if (!StringUtils.isEmpty(bookSearch.getBookId())) {
+        if (!StringUtils.hasText(bookSearch.getBookId())) {
             where = new BookSpecification(searchId);
         }
-        if (!StringUtils.isEmpty(bookSearch.getBookName())) {
+        if (!StringUtils.hasText(bookSearch.getBookName())) {
             if (where != null) {
                 where = where.and(new BookSpecification(searchBookName));
             } else {
                 where = new BookSpecification(searchBookName);
             }
         }
-        if (!StringUtils.isEmpty(bookSearch.getAuthorId())) {
+        if (!StringUtils.hasText(bookSearch.getAuthorId())) {
             if (where != null) {
                 where = where.and(new BookSpecification(searchAuthor));
             } else {
                 where = new BookSpecification(searchAuthor);
             }
         }
-        if (!StringUtils.isEmpty(bookSearch.getPublisherId())) {
+        if (!StringUtils.hasText(bookSearch.getPublisherId())) {
             if (where != null) {
                 where = where.and(new BookSpecification(searchPublisher));
             } else {
@@ -66,4 +66,5 @@ public class BookSpecificationBuilder {
         }
         return where;
     }
+
 }

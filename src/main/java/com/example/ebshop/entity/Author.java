@@ -7,7 +7,7 @@ import javax.persistence.*;
 @Data
 public class Author {
     @Id
-    @Column(name = "id",length = 254)
+    @Column(length = 254)
     private String id ;
     private String name;
     private String website;

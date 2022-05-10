@@ -1,8 +1,9 @@
 package com.example.ebshop.entity;
 
 import lombok.Data;
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
 @Entity
