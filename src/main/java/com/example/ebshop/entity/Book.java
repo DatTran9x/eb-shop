@@ -1,7 +1,10 @@
 package com.example.ebshop.entity;
 
 import lombok.Data;
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.util.Date;
 
@@ -18,7 +21,7 @@ public class Book {
     private Publisher publisher;
     private BigDecimal price;
     private Date publishedYear;
-    private String status;
+    private Boolean deleted;
     private Long quantityCurrent;
     private Long quantitySold;
 }
